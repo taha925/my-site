@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نماارا | طراحی داخلی و دکوراسیون</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1B1712;
+    --charcoal-2:#221C15;
+    --plaster:#F1EAD9;
+    --plaster-dim:#E3D8BF;
+    --brass:#BC9256;
+    --brass-light:#DCB77C;
+    --walnut:#7A4C2B;
+    --walnut-dark:#4B2C18;
+    --muted:#A99C84;
+    --line:rgba(220,183,124,0.22);
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--charcoal);
+    color:var(--plaster);
+    font-family:'Vazirmatn', sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.05;
+    background-image:radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+    background-size:3px 3px;
+    mix-blend-mode:overlay;
+  }
+
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  section{position:relative;z-index:1;}
+
+  :focus-visible{outline:2px solid var(--brass-light);outline-offset:3px;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(27,23,18,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    font-size:1.4rem;font-weight:800;letter-spacing:0.01em;color:var(--plaster);
+    text-decoration:none;
+  }
+  .logo span{color:var(--brass-light);}
+  .nav-links{display:flex;gap:34px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    text-decoration:none;color:var(--muted);font-size:0.98rem;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--brass-light);}
+  .nav-phone{
+    display:flex;align-items:center;gap:10px;
+    font-size:0.95rem;color:var(--plaster);text-decoration:none;
+    border:1px solid var(--line);padding:9px 18px;border-radius:var(--radius);
+    transition:border-color .2s ease, color .2s ease;
+    white-space:nowrap;
+  }
+  .nav-phone:hover{border-color:var(--brass-light);color:var(--brass-light);}
+  .num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;}
+
+  .burger{display:none;background:none;border:none;color:var(--plaster);font-size:1.6rem;cursor:pointer;}
+
+  @media (max-width:860px){
+    .nav-links,.nav-phone{display:none;}
+    .burger{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 60px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--brass-light);
+    font-size:1rem;
+    margin:0 0 18px;
+  }
+  h1{
+    font-size:clamp(2.3rem, 4.2vw + 1rem, 4rem);
+    font-weight:800;
+    line-height:1.28;
+    margin:0 0 26px;
+    color:var(--plaster);
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    color:var(--muted);
+    max-width:46ch;
+    margin:0 0 36px;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-size:1rem;
+    font-weight:600;
+    transition:transform .18s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--brass-light);color:var(--charcoal);}
+  .btn-primary:hover{background:var(--plaster);}
+  .btn-ghost{border:1px solid var(--line);color:var(--plaster);}
+  .btn-ghost:hover{border-color:var(--brass-light);color:var(--brass-light);}
+
+  .hero-art{position:relative;}
+  .hero-art svg{width:100%;height:auto;}
+  .draw-path{
+    stroke-dasharray:2400;
+    stroke-dashoffset:2400;
+    animation:draw 2.6s ease forwards 0.2s;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @media (prefers-reduced-motion: reduce){
+    .draw-path{stroke-dashoffset:0;animation:none;}
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:420px;margin:0 auto 20px;}
+  }
+
+  /* ---------- Section headings ---------- */
+  .section-head{max-width:56ch;margin:0 0 52px;}
+  .section-head h2{
+    font-size:clamp(1.7rem, 2.2vw + 1rem, 2.4rem);
+    font-weight:700;
+    margin:0 0 14px;
+    color:var(--plaster);
+  }
+  .section-head p{color:var(--muted);margin:0;font-size:1.05rem;}
+  .section-pad{padding:100px 0;}
+  .divider{height:1px;background:var(--line);}
+
+  /* ---------- Philosophy ---------- */
+  .philosophy{background:var(--charcoal-2);}
+  .principles{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid var(--line);
+  }
+  .principle{
+    padding:34px 30px 0;
+    border-left:1px solid var(--line);
+  }
+  .principle:first-child{padding-right:0;}
+  .principle:last-child{border-left:none;}
+  .principle svg{width:34px;height:34px;margin-bottom:20px;}
+  .principle h3{font-size:1.15rem;margin:0 0 10px;color:var(--plaster);font-weight:700;}
+  .principle p{color:var(--muted);margin:0;font-size:0.98rem;}
+
+  @media (max-width:760px){
+    .principles{grid-template-columns:1fr;}
+    .principle{border-left:none;border-top:1px solid var(--line);padding:30px 0 0;}
+    .principle:first-child{border-top:none;}
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:var(--charcoal);
+    padding:44px;
+  }
+  .service .num{
+    display:block;
+    font-family:'Vazirmatn',sans-serif;
+    color:var(--walnut);
+    font-size:0.85rem;
+    margin-bottom:18px;
+    direction:rtl;
+  }
+  .service h3{font-size:1.3rem;margin:0 0 12px;font-weight:700;}
+  .service p{color:var(--muted);margin:0;max-width:42ch;}
+
+  @media (max-width:760px){
+    .services-grid{grid-template-columns:1fr;}
+    .service{padding:34px 6px;}
+  }
+
+  /* ---------- Process ---------- */
+  .process{background:var(--charcoal-2);}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+  }
+  .step{border-top:2px solid var(--walnut);padding-top:22px;}
+  .step .step-index{font-size:0.9rem;color:var(--brass-light);margin-bottom:14px;display:block;}
+  .step h3{font-size:1.1rem;margin:0 0 10px;font-weight:700;}
+  .step p{color:var(--muted);font-size:0.95rem;margin:0;}
+
+  @media (max-width:900px){
+    .steps{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Sketch gallery ---------- */
+  .sketch-note{
+    background:var(--charcoal-2);
+    border:1px solid var(--line);
+    padding:20px 26px;
+    border-radius:var(--radius);
+    color:var(--muted);
+    font-size:0.95rem;
+    margin-bottom:46px;
+    max-width:70ch;
+  }
+  .sketch-note b{color:var(--brass-light);font-weight:600;}
+  .sketch-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .sketch-card{
+    background:var(--charcoal-2);
+    border:1px solid var(--line);
+    padding:26px 26px 22px;
+    transition:border-color .2s ease;
+  }
+  .sketch-card:hover{border-color:var(--brass-light);}
+  .sketch-card svg{width:100%;height:150px;margin-bottom:18px;}
+  .sketch-card h4{margin:0 0 6px;font-size:1.05rem;font-weight:700;}
+  .sketch-card p{margin:0;color:var(--muted);font-size:0.92rem;}
+
+  @media (max-width:900px){
+    .sketch-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .sketch-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--charcoal-2);}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+  }
+  .contact-phone{
+    font-size:clamp(1.8rem,3vw,2.6rem);
+    font-weight:800;
+    color:var(--brass-light);
+    text-decoration:none;
+    display:inline-block;
+    margin:6px 0 18px;
+    direction:ltr;
+  }
+  .contact-left p{color:var(--muted);max-width:44ch;}
+  .messenger-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .messenger-item{
+    background:var(--charcoal);
+    padding:22px 24px;
+    text-decoration:none;
+    color:var(--plaster);
+    display:flex;align-items:center;justify-content:space-between;
+    transition:background .2s ease;
+  }
+  .messenger-item:hover{background:var(--charcoal-2);}
+  .messenger-item span.name{font-weight:600;}
+  .messenger-item span.hint{color:var(--muted);font-size:0.82rem;}
+  .coord-note{
+    margin-top:26px;
+    color:var(--muted);
+    font-size:0.92rem;
+    border-right:2px solid var(--walnut);
+    padding-right:16px;
+  }
+
+  @media (max-width:860px){
+    .contact-grid{grid-template-columns:1fr;gap:36px;}
+    .messenger-list{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;border-top:1px solid var(--line);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .footer-row p{margin:0;color:var(--muted);font-size:0.9rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">نما<span>آرا</span></a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">دیدگاه ما</a></li>
+      <li><a href="#services">خدمات</a></li>
+      <li><a href="#process">روند کار</a></li>
+      <li><a href="#gallery">پیش‌طرح‌ها</a></li>
+      <li><a href="#contact">تماس</a></li>
+    </ul>
+    <a class="nav-phone" href="tel:09151867198">
+      <span class="num">09151867198</span>
+    </a>
+    <button class="burger" aria-label="منو">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-eyebrow">استودیو طراحی داخلی و دکوراسیون</p>
+        <h1>هر گوشه‌ی خانه‌تان،<br>یک تصمیم طراحی‌شده</h1>
+        <p class="lead">نماارا فضای زندگی و کار شما را با نور درست، متریال هماهنگ و چیدمانی متناسب با سبک زندگی‌تان، به تجربه‌ای آرام و دلنشین تبدیل می‌کند.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">هماهنگی برای بازدید</a>
+          <a href="#services" class="btn btn-ghost">دیدن خدمات</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 480 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- room corner -->
+          <path class="draw-path" d="M20 40 L20 420 L460 420" stroke="#BC9256" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- window -->
+          <rect x="60" y="60" width="150" height="190" rx="2" stroke="#DCB77C" stroke-width="1.5"/>
+          <line x1="135" y1="60" x2="135" y2="250" stroke="#DCB77C" stroke-width="1"/>
+          <line x1="60" y1="155" x2="210" y2="155" stroke="#DCB77C" stroke-width="1"/>
+          <path d="M60 60 Q30 90 30 260" stroke="#7A4C2B" stroke-width="1.4"/>
+          <path d="M210 60 Q245 100 246 270" stroke="#7A4C2B" stroke-width="1.4"/>
+          <!-- floor lamp -->
+          <line x1="300" y1="420" x2="300" y2="150" stroke="#BC9256" stroke-width="1.4"/>
+          <path d="M270 150 L330 150 L318 110 L282 110 Z" stroke="#DCB77C" stroke-width="1.4"/>
+          <circle cx="300" cy="420" r="16" stroke="#BC9256" stroke-width="1.2"/>
+          <!-- armchair -->
+          <path d="M330 420 L330 330 Q330 305 358 305 L410 305 Q438 305 438 330 L438 420" stroke="#DCB77C" stroke-width="1.6"/>
+          <path d="M330 360 L438 360" stroke="#DCB77C" stroke-width="1.2"/>
+          <line x1="345" y1="420" x2="345" y2="405" stroke="#7A4C2B" stroke-width="1.4"/>
+          <line x1="422" y1="420" x2="422" y2="405" stroke="#7A4C2B" stroke-width="1.4"/>
+          <!-- plant -->
+          <path d="M60 420 L60 385 Q60 370 78 370 Q96 370 96 385 L96 420" stroke="#7A4C2B" stroke-width="1.4"/>
+          <path d="M78 370 C60 340 55 310 78 290" stroke="#BC9256" stroke-width="1.2"/>
+          <path d="M78 370 C96 335 100 305 78 280" stroke="#BC9256" stroke-width="1.2"/>
+          <path d="M78 370 C78 330 78 300 78 270" stroke="#BC9256" stroke-width="1.2"/>
+          <!-- rug -->
+          <ellipse cx="250" cy="415" rx="150" ry="16" stroke="#DCB77C" stroke-width="1" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy section-pad" id="philosophy">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>دیدگاه ما درباره‌ی فضا</h2>
+        <p>طراحی خوب زیبا دیده می‌شود، اما در آرامش و کارکرد فضا احساس می‌شود. سه اصل زیر، ستون کار ما در نماارا هستند.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#DCB77C" stroke-width="1.6"/><path d="M20 4V9M20 31V36M4 20H9M31 20H36M8 8L11.5 11.5M28.5 28.5L32 32M32 8L28.5 11.5M11.5 28.5L8 32" stroke="#DCB77C" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>نور</h3>
+          <p>چیدمان و طراحی نورپردازی طبیعی و مصنوعی طوری که فضا در ساعات مختلف روز، همچنان زنده و متعادل باشد.</p>
+        </div>
+        <div class="principle">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M6 20 Q14 8 20 20 Q26 32 34 20" stroke="#DCB77C" stroke-width="1.6" stroke-linecap="round"/><path d="M6 26 Q14 14 20 26 Q26 38 34 26" stroke="#7A4C2B" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/></svg>
+          <h3>متریال</h3>
+          <p>انتخاب چوب، سنگ، پارچه و فلز بر اساس دوام، بافت و هماهنگی‌شان با یکدیگر، نه صرفاً بر اساس مد روز.</p>
+        </div>
+        <div class="principle">
+          <svg viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="28" height="28" stroke="#DCB77C" stroke-width="1.4"/><line x1="6" y1="20" x2="34" y2="20" stroke="#DCB77C" stroke-width="1" opacity="0.6"/><line x1="20" y1="6" x2="20" y2="34" stroke="#DCB77C" stroke-width="1" opacity="0.6"/></svg>
+          <h3>تناسب</h3>
+          <p>اندازه‌ی درست هر عنصر نسبت به فضا و نسبت به آدم‌هایی که در آن زندگی می‌کنند؛ نه بزرگ‌تر، نه کوچک‌تر.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>خدمات ما</h2>
+        <p>از یک اتاق تا یک واحد کامل، از صفر تا بازآرایی فضای موجود.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service">
+          <span class="num">۰۱</span>
+          <h3>طراحی داخلی مسکونی</h3>
+          <p>از پلان اولیه تا جزئیات اجرایی برای آپارتمان، ویلا و سوئیت؛ هماهنگ با نیاز و سبک زندگی خانواده‌تان.</p>
+        </div>
+        <div class="service">
+          <span class="num">۰۲</span>
+          <h3>دکوراسیون فضای تجاری</h3>
+          <p>طراحی دفتر کار، مطب، کافه و فروشگاه با تمرکز بر تجربه‌ی مشتری و هویت بصری برند شما.</p>
+        </div>
+        <div class="service">
+          <span class="num">۰۳</span>
+          <h3>طراحی و ساخت کابینت</h3>
+          <p>کابینت آشپزخانه و کمد دیواری با طراحی اختصاصی، متناسب با ابعاد دقیق فضای شما.</p>
+        </div>
+        <div class="service">
+          <span class="num">۰۴</span>
+          <h3>مشاوره چیدمان و نورپردازی</h3>
+          <p>بازآرایی فضای فعلی‌تان بدون بازسازی کامل؛ تغییری محسوس با هزینه‌ای معقول.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PROCESS -->
+  <section class="process section-pad" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>روند همکاری</h2>
+        <p>از اولین گفتگو تا تحویل فضا، در چهار گام روشن.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-index">۰۱ مشاوره اولیه</span>
+          <h3>گفتگو و بازدید</h3>
+          <p>بازدید حضوری یا آنلاین از فضا و شنیدن دقیق نیاز، سلیقه و بودجه‌ی شما.</p>
+        </div>
+        <div class="step">
+          <span class="step-index">۰۲ طراحی مفهومی</span>
+          <h3>ایده و پالت</h3>
+          <p>ارائه‌ی ایده‌ی اصلی، پالت رنگ و متریال، و پیش‌طرح کلی فضا برای تأیید شما.</p>
+        </div>
+        <div class="step">
+          <span class="step-index">۰۳ نقشه اجرایی</span>
+          <h3>جزئیات فنی</h3>
+          <p>تهیه‌ی نقشه‌های اجرایی، لیست متریال و برآورد دقیق هزینه و زمان.</p>
+        </div>
+        <div class="step">
+          <span class="step-index">۰۴ اجرا</span>
+          <h3>نظارت تا تحویل</h3>
+          <p>همراهی و نظارت بر اجرا تا لحظه‌ی تحویل نهایی فضا به شما.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKETCH GALLERY -->
+  <section class="section-pad" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>پیش‌طرح‌های اخیر</h2>
+        <p>نمونه‌ای از فضاهایی که این ماه روی آن‌ها کار کرده‌ایم.</p>
+      </div>
+
+      <div class="sketch-note">
+        <b>نکته:</b> تصاویر اجراشده‌ی پروژه‌ها حجم بالایی دارند و از طریق سایت قابل نمایش نیستند؛ آلبوم کامل عکس‌ها را در پیام‌رسان دلخواهتان برایتان ارسال می‌کنیم.
+      </div>
+
+      <div class="sketch-grid">
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <path d="M10 140 L10 10 L190 10" stroke="#BC9256" stroke-width="1.3"/>
+            <rect x="30" y="25" width="60" height="70" stroke="#DCB77C" stroke-width="1.2"/>
+            <line x1="60" y1="25" x2="60" y2="95" stroke="#DCB77C" stroke-width="0.8"/>
+            <path d="M120 140 L120 90 Q120 78 135 78 L165 78 Q180 78 180 90 L180 140" stroke="#DCB77C" stroke-width="1.3"/>
+          </svg>
+          <h4>پذیرایی آپارتمان مسکونی</h4>
+          <p>پالت گرم، نورپردازی غیرمستقیم، مبلمان کم‌ارتفاع.</p>
+        </div>
+
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <line x1="10" y1="60" x2="190" y2="60" stroke="#BC9256" stroke-width="1.3"/>
+            <rect x="20" y="60" width="160" height="55" stroke="#DCB77C" stroke-width="1.2"/>
+            <line x1="60" y1="60" x2="60" y2="115" stroke="#DCB77C" stroke-width="0.7"/>
+            <line x1="100" y1="60" x2="100" y2="115" stroke="#DCB77C" stroke-width="0.7"/>
+            <line x1="140" y1="60" x2="140" y2="115" stroke="#DCB77C" stroke-width="0.7"/>
+            <path d="M100 20 L100 45" stroke="#7A4C2B" stroke-width="1.2"/>
+            <path d="M80 20 L120 20" stroke="#7A4C2B" stroke-width="1.2"/>
+          </svg>
+          <h4>آشپزخانه اپن ویلایی</h4>
+          <p>کابینت سفارشی و آویز نورپردازی بالای جزیره.</p>
+        </div>
+
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <path d="M20 140 L20 20 L180 20" stroke="#BC9256" stroke-width="1.3"/>
+            <rect x="35" y="55" width="80" height="35" stroke="#DCB77C" stroke-width="1.2"/>
+            <rect x="130" y="70" width="30" height="20" stroke="#DCB77C" stroke-width="1"/>
+            <line x1="145" y1="70" x2="145" y2="35" stroke="#7A4C2B" stroke-width="1"/>
+            <circle cx="145" cy="30" r="6" stroke="#7A4C2B" stroke-width="1"/>
+          </svg>
+          <h4>اتاق خواب مستر</h4>
+          <p>تخت‌خواب پارچه‌ای و پاتختی هماهنگ با هدبورد.</p>
+        </div>
+
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <line x1="10" y1="130" x2="190" y2="130" stroke="#BC9256" stroke-width="1.3"/>
+            <rect x="40" y="80" width="90" height="6" stroke="#DCB77C" stroke-width="1"/>
+            <line x1="55" y1="86" x2="55" y2="130" stroke="#DCB77C" stroke-width="1"/>
+            <line x1="115" y1="86" x2="115" y2="130" stroke="#DCB77C" stroke-width="1"/>
+            <rect x="55" y="40" width="60" height="35" stroke="#7A4C2B" stroke-width="1"/>
+          </svg>
+          <h4>دفتر کار مدیریتی</h4>
+          <p>میز چوب گردو و قفسه‌ی دیواری کم‌ارتفاع.</p>
+        </div>
+
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <ellipse cx="100" cy="80" rx="55" ry="18" stroke="#DCB77C" stroke-width="1.2"/>
+            <circle cx="55" cy="80" r="10" stroke="#7A4C2B" stroke-width="1"/>
+            <circle cx="145" cy="80" r="10" stroke="#7A4C2B" stroke-width="1"/>
+            <circle cx="100" cy="55" r="10" stroke="#7A4C2B" stroke-width="1"/>
+            <line x1="100" y1="30" x2="100" y2="45" stroke="#BC9256" stroke-width="1"/>
+          </svg>
+          <h4>فضای پذیرایی رستوران</h4>
+          <p>میز مدور مرکزی و صندلی‌های چوبی سبک.</p>
+        </div>
+
+        <div class="sketch-card">
+          <svg viewBox="0 0 200 150" fill="none">
+            <rect x="60" y="30" width="80" height="55" rx="2" stroke="#DCB77C" stroke-width="1.2"/>
+            <ellipse cx="100" cy="110" rx="30" ry="10" stroke="#7A4C2B" stroke-width="1"/>
+            <line x1="100" y1="85" x2="100" y2="100" stroke="#7A4C2B" stroke-width="1"/>
+            <line x1="30" y1="45" x2="45" y2="45" stroke="#BC9256" stroke-width="1"/>
+            <line x1="155" y1="45" x2="170" y2="45" stroke="#BC9256" stroke-width="1"/>
+          </svg>
+          <h4>سرویس بهداشتی و روشویی</h4>
+          <p>آینه قدی و شیرآلات با بدنه‌ی برنجی.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section-pad" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-left">
+        <div class="section-head" style="margin-bottom:0;">
+          <h2>بیایید فضایتان را تعریف کنیم</h2>
+          <p>برای هماهنگی بازدید یا هر سوالی درباره‌ی پروژه‌تان، از طریق شماره‌ی زیر با ما در تماس باشید.</p>
+        </div>
+        <a class="contact-phone" href="tel:09151867198">09151867198</a>
+        <p>پاسخگویی هر روز هفته، از طریق تماس یا پیام‌رسان‌های زیر.</p>
+      </div>
+
+      <div>
+        <div class="messenger-list">
+          <a class="messenger-item" href="https://t.me/09151867198">
+            <span class="name">تلگرام</span><span class="hint">ارسال پیام</span>
+          </a>
+          <a class="messenger-item" href="#">
+            <span class="name">روبیکا</span><span class="hint">ارسال پیام</span>
+          </a>
+          <a class="messenger-item" href="#">
+            <span class="name">ایتا</span><span class="hint">ارسال پیام</span>
+          </a>
+          <a class="messenger-item" href="#">
+            <span class="name">بله</span><span class="hint">ارسال پیام</span>
+          </a>
+          <a class="messenger-item" href="#">
+            <span class="name">شاد</span><span class="hint">ارسال پیام</span>
+          </a>
+          <a class="messenger-item" href="tel:09151867198">
+            <span class="name">تماس مستقیم</span><span class="hint num">09151867198</span>
+          </a>
+        </div>
+        <p class="coord-note">برای هماهنگی، ابتدا از طریق همین شماره در پیام‌رسان دلخواهتان به ما پیام دهید تا زمان بازدید یا مشاوره را هماهنگ کنیم.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a href="#top" class="logo">نما<span>آرا</span></a>
+    <p>طراحی داخلی و دکوراسیون نماارا</p>
+  </div>
+</footer>
+
+</body>
+</html>
